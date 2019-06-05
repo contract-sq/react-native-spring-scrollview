@@ -3,13 +3,18 @@ def safeExtGet(prop, fallback) {
 }
 
 buildscript {
-    repositories {
-        jcenter()
-    }
+     repositories {
+         maven {
+             url 'https://maven.google.com/'
+             name 'Google'
+         }
+         jcenter()
+      }
 
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
-    }
+ 
+      dependencies {		     
+        classpath 'com.android.tools.build:gradle:3.1.2'
+        }
 }
 
 apply plugin: 'com.android.library'
