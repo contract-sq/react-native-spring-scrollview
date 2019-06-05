@@ -20,23 +20,27 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion safeExtGet('compileSdkVersion', 26)
-    publishNonDefault true
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
 
     defaultConfig {
-        minSdkVersion safeExtGet('minSdkVersion', 16)
-        targetSdkVersion safeExtGet('targetSdkVersion', 26)
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName computeVersionName()
     }
-    lintOptions {
-        abortOnError false
-    }
+
 }
 
 repositories {
-    mavenCentral()
+    maven {
+        jcenter()
+        // All of React Native (JS, Android binaries) is installed from npm
+        url "$rootDir/../node_modules/react-native/android"
+    }
 }
 
 dependencies {
-    api 'com.facebook.react:react-native:+'
+    compile "com.facebook.react:react-native:+"  // From node_modules
 }
   
